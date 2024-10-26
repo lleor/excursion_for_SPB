@@ -55,6 +55,15 @@
                 <td width="300">От 7 человек</td>
             </tr>
         </table>
+
+        <form>
+            <input type="checkbox" name="services" value="transfer">
+            <label>Трансфер до места экскурсии</label>
+            <br>
+            <input type="checkbox" name="services" value="disable transfer">
+            <label>Трансфер для людей из маломобильных групп населения</label>
+        </form>
+
         <!--ОТЗЫВЫ-->
         <figure>   <!--Контейнер с картинкой и описанием к ней-->
             <img src="content/images/5.png" 
@@ -83,12 +92,18 @@
                 Не первый раз в Питере, но эти локации увидела впервые. Класс!
             </blockquote>
         </figure>
+        
         <form>
             <input type="text" placeholder="Имя"><br>
             <input type="text" placeholder="Фамилия"><br>
             <button type="submit">Отправить</button>
         </form>
-
+        <select>
+            <label for="tarif">Выберите тариф</label>
+            <option value="Economy">Экономный</option>
+            <option value="Comfort">Комфортный</option>
+        </select>
+        <br>
         <a href = "https://t.me/Romanzos">Свяжитесь с автором проекта сайта</a> <br>
         <a href = "https://t.me/Edusondaily">Проект сайта разработан под руководством школы Eduson</a>
     </body>

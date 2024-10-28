@@ -56,15 +56,40 @@
             </tr>
         </table>
 
+        <!--Форма с checkbox-->
         <form>
-            <input type="checkbox" name="services" value="transfer">
-            <label>Трансфер до места экскурсии</label>
-            <br>
-            <input type="checkbox" name="services" value="disable transfer">
-            <label>Трансфер для людей из маломобильных групп населения</label>
+            <ul>
+                <li>
+                    <input type="checkbox" name="services" value="transfer">
+                    <label>Трансфер до места экскурсии</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="services" value="disable transfer">
+                    <label>Трансфер для людей из маломобильных групп населения</label>
+                </li>
+            </ul>
         </form>
 
-        <!--ОТЗЫВЫ-->
+        <p2 id="total-price">Сумма 0 рублей</p2>
+            <script>
+                const checkboxes = document.querySelectorAll('input[name="services"]');
+                const totalPriceElement = document.getElementById('total-price');
+
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        let totalPrice = 0;
+                        checkboxes.forEach(checkbox => {
+                            if (checkbox.checked) {
+                                totalPrice += parseInt(checkbox.getAttribute('data-price'));
+                            }
+                        });
+                    totalPriceElement.textContent = `Сумма: ${totalPrice} рублей`;
+                    });
+                });
+            </script>
+
+        <!--ОТЗЫВЫ-->       
+        <h2>Отзывы участников</h2>
         <figure>   <!--Контейнер с картинкой и описанием к ней-->
             <img src="content/images/5.png" 
                 alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
@@ -93,6 +118,7 @@
             </blockquote>
         </figure>
         
+        <!-- Форма с обратной связью-->
         <form>
             <input type="text" placeholder="Имя"><br>
             <input type="text" placeholder="Фамилия"><br>

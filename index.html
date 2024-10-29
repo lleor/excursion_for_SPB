@@ -41,96 +41,160 @@
         <!--<table width=200px>-->
         <!--<table width=40%>-->
         <!--<table width="auto">-->
-        <table width=500>
-            <tr>
-                <th width="200">Тариф</th>
-                <th width="300">Группа</th>
-            </tr>
-            <tr>
-                <td width="200">Эконом</td>
-                <td width="300">От 15 человек</td>
-            </tr>
-            <tr>
-                <td width="200">Комфорт</td>
-                <td width="300">От 7 человек</td>
-            </tr>
-        </table>
-
-        <!--Форма с checkbox-->
-        <form>
-            <ul>
-                <li>
-                    <input type="checkbox" name="services" value="transfer">
-                    <label>Трансфер до места экскурсии</label>
-                </li>
-                <li>
-                    <input type="checkbox" name="services" value="disable transfer">
-                    <label>Трансфер для людей из маломобильных групп населения</label>
-                </li>
-            </ul>
-        </form>
-
-        <p2 id="total-price">Сумма 0 рублей</p2>
-            <script>
-                const checkboxes = document.querySelectorAll('input[name="services"]');
-                const totalPriceElement = document.getElementById('total-price');
-
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', () => {
-                        let totalPrice = 0;
-                        checkboxes.forEach(checkbox => {
-                            if (checkbox.checked) {
-                                totalPrice += parseInt(checkbox.getAttribute('data-price'));
-                            }
+        <div class="container-tarif" id="prices">
+            <style>
+                p{
+                    text-align: justify; /*выравнивание по ширине*/
+                    hyphens: auto;       /*расстановка переносов*/
+                }
+            </style>
+            <h2 class="sub-heading">Какие есть тарифы?</h2>
+            <p >Мы знаем, что каждое путешествие уникально. Поэтому разработали несколько тарифов, чтобы вы могли выбрать самый комфортный для себя. Независимо от выбранного тарифа, вас ждет незабываемое путешествие.</p>
+            <table width="auto">
+                <tr>
+                    <th width="100">Тариф</th>
+                    <th width="150">Группа</th>
+                    <th>Стоимость</th>
+                    <th width="500">Программа</th>
+                </tr>
+                <tr>
+                    <td>Эконом</td>
+                    <td>От 15 человек</td>
+                    <td> 1500 руб.</td>
+                    <td>Пешая прогулка, прогулка по крышам</td>
+                </tr>
+                <tr>
+                    <td>Комфорт</td>
+                    <td>От 7 человек</td>
+                    <td > 2500 руб.</td>
+                    <td>Пешая прогулка. Экскурсия по рекам и каналам. Погрулка по крышам</td>
+                </tr>
+                <tr>
+                    <td>Премиум</td>
+                    <td>От 4 до 6 человек</td>
+                    <td> 4200 руб.</td>
+                    <td>Пешая прогулка. Экскурсия по рекам и каналам. Погрулка по крышам. Экскурсия в Петергоф</td>
+                </tr>
+                <tr>
+                    <td>Люкс</td>
+                    <td>1-2 человека</td>
+                    <td> 6000 руб.</td>
+                    <td>Эксклюзивные маршруты под ключ. Пешая прогулка. Экскурсия по рекам и каналам. Погрулка по крышам. Экскурсия в Петергоф</td>
+                </tr>
+            </table>
+            <p>Мы предлагаем различные варианты оплаты. Менеджер поможет подобрать оптимальный вариант.</p>
+        </div>
+        <div class="dop">
+            <h2>Дополнительные услуги</h2>
+            <!--Форма с checkbox-->
+            <form class="dop-form">
+                <ul>
+                    <li>
+                        <input type="checkbox" name="services" value="transfer" data-price="100">
+                        <label>Трансфер до места экскурсии</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="disable transfer" data-price="100">
+                        <label>Трансфер для людей из маломобильных групп населения</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="breakfast" data-price="100">
+                        <label>Завтрак включен</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="lunch" data-price="100">
+                        <label>Обед включен</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="dinner" data-price="100">
+                        <label>Ужин включен</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="translator" data-price="100">
+                        <label>Переводчик с русского на английский язык</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="children_guide" data-price="100">
+                        <label>Экскурсовод для детей</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="services" value="sign_language_interpreter" data-price="100">
+                        <label>Сурдопереводчик</label>
+                    </li>
+                </ul>
+            </form>
+    
+            <p2 id="total-price">Сумма 0 рублей</p2>
+                <script>
+                    const checkboxes = document.querySelectorAll('input[name="services"]');
+                    const totalPriceElement = document.getElementById('total-price');
+    
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', () => {
+                            let totalPrice = 0;
+                            checkboxes.forEach(checkbox => {
+                                if (checkbox.checked) {
+                                    totalPrice += parseInt(checkbox.getAttribute('data-price'));
+                                }
+                            });
+                        totalPriceElement.textContent = `Сумма: ${totalPrice} рублей`;
                         });
-                    totalPriceElement.textContent = `Сумма: ${totalPrice} рублей`;
                     });
-                });
-            </script>
-
+                </script>
+        </div>
+ 
+        <div>
         <!--ОТЗЫВЫ-->       
-        <h2>Отзывы участников</h2>
-        <figure>   <!--Контейнер с картинкой и описанием к ней-->
-            <img src="content/images/5.png" 
-                alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
-                width="526"
-                height="295">
-            <figcaption>Аня и Сергей из города Пермь</figcaption>
-            <blockquote>Спасибо за незабываемую экскурсию! Увозим с собой нереальные фотографии! Организаторам огромное спасибо, что даже в дождь путешествие было комфортным.
-            </blockquote>
-        </figure>
-        <figure>
-            <img src="content/images/17.png"
-                alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
-                width="526"
-                height="939">
-            <figcaption>Света, Алена, Саша и Ваня из города Краснодар</figcaption>
-            <blockquote>Мы провели замечательный день с вашей экскурсией по крышам Санкт-Петербурга! Это было настоящее приключение. Рекомендуем!</blockquote>
-        </figure>
-        <figure>
-            <img src="content/images/21.png"
-                alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
-                width="526"
-                height="295">
-            <figcaption>Кристина из города Архангельск</figcaption>
-            <blockquote>Я просто влюбилась в Санкт-Петербург благодаря этой экскурсии! Суперский гид рассказал удивительные истории о городе и его жителях. Отдельно отмечу маршрут. <br>
+            <h2>Отзывы участников</h2>
+            <figure>   <!--Контейнер с картинкой и описанием к ней-->
+                <img src="content/images/5.png" 
+                    alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
+                    width="526"
+                    height="295">
+                <figcaption>Аня и Сергей из города Пермь</figcaption>
+                <blockquote>Спасибо за незабываемую экскурсию! Увозим с собой нереальные фотографии! Организаторам огромное спасибо, что даже в дождь путешествие было комфортным.
+                </blockquote>
+            </figure>
+            <figure>
+                <img src="content/images/17.png"
+                    alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
+                    width="526"
+                    height="939">
+                <figcaption>Света, Алена, Саша и Ваня из города Краснодар</figcaption>
+                <blockquote>Мы провели замечательный день с вашей экскурсией по крышам Санкт-Петербурга! Это было настоящее приключение. Рекомендуем!</blockquote>
+            </figure>
+            <figure>
+                <img src="content/images/21.png"
+                    alt="ERROR download of picture. People who visited Saint Petesberg and they are happy about it"
+                    width="526"
+                    height="295">
+                <figcaption>Кристина из города Архангельск</figcaption>
+                <blockquote>Я просто влюбилась в Санкт-Петербург благодаря этой экскурсии! Суперский гид рассказал удивительные истории о городе и его жителях. Отдельно отмечу маршрут.    <br>
                 Не первый раз в Питере, но эти локации увидела впервые. Класс!
-            </blockquote>
-        </figure>
-        
-        <!-- Форма с обратной связью-->
-        <form>
-            <input type="text" placeholder="Имя"><br>
-            <input type="text" placeholder="Фамилия"><br>
-            <button type="submit">Отправить</button>
-        </form>
-        <select>
-            <label for="tarif">Выберите тариф</label>
-            <option value="Economy">Экономный</option>
-            <option value="Comfort">Комфортный</option>
-        </select>
-        <br>
-        <a href = "https://t.me/Romanzos">Свяжитесь с автором проекта сайта</a> <br>
-        <a href = "https://t.me/Edusondaily">Проект сайта разработан под руководством школы Eduson</a>
+                </blockquote>
+            </figure>
+        </div>
+        <div class="column">
+            <!-- Форма с обратной связью-->
+            <h5>Как записаться на экскурсию</h5>
+            <p>Для подробной информации заполните форму.<br>Наши менеджеры с вами свяжутся.</p>
+            <form>
+                <input type="text" placeholder="Имя"><br>
+                <input type="text" placeholder="Фамилия"><br>
+                <input type="email" placeholder="E-mail"><br>
+                <input type="tel" placeholder="Номер телефона"><br>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+            <select name="tariff" id="tariff">
+                <label for="tarif">Выберите тариф</label>
+                <option value="economy">Экономный</option>
+                <option value="comfort">Комфортный</option>
+                <option value="premium">Премиум</option>
+                <option value="luxury">Люкс</option>
+            </select>
+            <br>
+            <a href = "https://t.me/Romanzos">Свяжитесь с автором проекта сайта</a> <br>
+            <a href = "https://t.me/Edusondaily">Проект сайта разработан под руководством школы Eduson</a>
     </body>
 </html>

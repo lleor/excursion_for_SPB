@@ -42,7 +42,7 @@
     color: #fff;
     box-sizing: border-box; /*Значения padding и border не будут добавлены к ширине и высоте блока. Ширина и высота блока определяются только контентом внутри или значениями width/height*/
     padding-top: 180px;
-    padding-bottom: 120px;
+    padding-bottom: 120px;  
 }
 
 .intro-title {
@@ -93,6 +93,11 @@
    background-image: linear-gradient(90deg, #fff 50%, #242424 50%);
 }
 
+.page-content .container {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+}
+
 .page-section {
     position: relative;
 }
@@ -123,6 +128,9 @@
 
 .program-row {
     margin-top: 30px;
+    display: grid;
+    grid-template-columns: 440px 1fr;
+    gap: 40px;
 }
 
 .program-image-wrapper {
@@ -133,6 +141,7 @@
 }
 
 .program-image {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -154,6 +163,12 @@
 
 .auditory {
     position: relative;
+}
+
+.auditory-top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .auditory-bottom {
@@ -179,12 +194,17 @@
 }
 
 .auditory-image {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .auditory-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 20px;
     margin: 0;
 }
 
@@ -255,6 +275,11 @@
     list-style-type: none;
 }
 
+.services-right {
+    display: flex;
+    flex-direction: column;
+}
+
 .services-list label {
     font-size: 16px;
 }
@@ -267,6 +292,13 @@
     font-size: 20px;
     font-weight: 700;
     white-space: nowrap;
+}
+
+.services-row {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 40px;
+    margin-top: 30px;
 }
 
 .services-text-wrapper p {
@@ -350,10 +382,15 @@
 }
 
 .contacts-form-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 30px;
 }
 
 .contacts-btn {
+    display: flex;
+    justify-content: space-between;
     position: relative;
     color:#fff;
     padding: 20px 40px;
@@ -404,6 +441,7 @@
 }
 
 .card-image-link {
+    display: block;
     overflow: hidden;
     width: 100%;
     height: 160px;
@@ -415,6 +453,7 @@
 }
 
 .card-image {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
